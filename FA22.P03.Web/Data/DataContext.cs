@@ -12,6 +12,10 @@ namespace FA22.P03.Web.Data
         {
         }
 
+        public DataContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

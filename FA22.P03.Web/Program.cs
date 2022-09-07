@@ -14,16 +14,22 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>().Database.Migrate();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var serviceProvider = scope.ServiceProvider;
+    SeedData.Initialize(serviceProvider);
 }
 
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 var currentId = 1;
 var products = new List<ProductDto>
