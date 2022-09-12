@@ -8,8 +8,6 @@ namespace FA22.P03.Web.Configuration
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.ToTable("Items");
-
             builder.Property(e => e.Id)
                 .IsRequired();
             builder.Property(e => e.Condition)

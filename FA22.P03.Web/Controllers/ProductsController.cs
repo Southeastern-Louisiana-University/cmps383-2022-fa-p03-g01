@@ -8,17 +8,6 @@ namespace FA22.P03.Web.Controllers
     [Route("/api")]
     public class ProductsController : Controller
     {
-        private readonly DataContext _dataContext;
-
-        public ProductsController(DataContext dataContext)
-        {
-            _dataContext = dataContext;
-        }
-
-        [HttpGet("/products")]
-        public IActionResult GetAllProducts()
-        {
-            return ;
-        }
+        
     }
 }

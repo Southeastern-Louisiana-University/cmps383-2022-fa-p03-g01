@@ -4,6 +4,7 @@ using FA22.P03.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FA22.P03.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220907172644_redo-original-seeding")]
+    partial class redooriginalseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,6 +121,26 @@ namespace FA22.P03.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Nintendo's retro console loved thoughout the ages",
+                            Name = "Nintendo 64"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Donkey Kong 64 cartridge for the N64",
+                            Name = "Donkey Kong 64"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Ocarina of Time cartridge for the N64",
+                            Name = "Legend of Zelda: Ocarina of Time"
+                        });
                 });
 
             modelBuilder.Entity("FA22.P03.Web.Features.ItemListings.ItemListing", b =>

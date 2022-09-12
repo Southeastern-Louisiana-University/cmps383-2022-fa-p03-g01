@@ -16,8 +16,8 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var serviceProvider = scope.ServiceProvider;
-    SeedData.Initialize(serviceProvider);
+    var services = scope.ServiceProvider;
+    MigrateAndSeed.Initialize(services);
 }
 
     // Configure the HTTP request pipeline.
@@ -28,8 +28,6 @@ using (var scope = app.Services.CreateScope())
     }
 
 app.UseHttpsRedirection();
-
-app.MapControllers();
 
 var currentId = 1;
 var products = new List<ProductDto>

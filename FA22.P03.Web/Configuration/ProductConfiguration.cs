@@ -9,8 +9,6 @@ namespace FA22.P03.Web.Configuration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products");
-
             builder.Property(e => e.Id)
                 .IsRequired();
             builder.Property(e => e.Name)
