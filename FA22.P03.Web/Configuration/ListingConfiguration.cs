@@ -8,14 +8,12 @@ namespace FA22.P03.Web.Configuration
     {
         public void Configure(EntityTypeBuilder<Listing> builder)
         {
-            builder.Property(e => e.Id)
-                .IsRequired();
             builder.Property(e => e.Price)
                 .HasPrecision(18, 2)
                 .IsRequired();
             builder.Property(e => e.Name)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(120);
             builder.Property(e => e.Description)
                 .IsRequired()
                 .HasMaxLength(150);

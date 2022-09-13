@@ -4,6 +4,7 @@ using FA22.P03.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FA22.P03.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220912222654_fixed-sql-issue")]
+    partial class fixedsqlissue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace FA22.P03.Web.Migrations
 
                     b.HasIndex("ListingId");
 
-                    b.ToTable("ItemListing", (string)null);
+                    b.ToTable("ItemListing");
                 });
 
             modelBuilder.Entity("FA22.P03.Web.Features.Items.Item", b =>
@@ -64,7 +66,7 @@ namespace FA22.P03.Web.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Item", (string)null);
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("FA22.P03.Web.Features.Listings.Listing", b =>
@@ -85,8 +87,8 @@ namespace FA22.P03.Web.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(120)
-                        .HasColumnType("nvarchar(120)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -97,7 +99,7 @@ namespace FA22.P03.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Listing", (string)null);
+                    b.ToTable("Listing");
                 });
 
             modelBuilder.Entity("FA22.P03.Web.Features.Products.Product", b =>
@@ -109,16 +111,16 @@ namespace FA22.P03.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(120)
+                        .HasColumnType("nvarchar(120)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("FA22.P03.Web.Features.ItemListings.ItemListing", b =>

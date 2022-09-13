@@ -1,9 +1,4 @@
-﻿using FA22.P03.Web.Configuration;
-using FA22.P03.Web.Features.ItemListings;
-using FA22.P03.Web.Features.Items;
-using FA22.P03.Web.Features.Listings;
-using FA22.P03.Web.Features.Products;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FA22.P03.Web.Data
 {
@@ -19,8 +14,6 @@ namespace FA22.P03.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
     }
